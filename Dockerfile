@@ -45,13 +45,12 @@ RUN mkdir -p /var/run/dbus/
 USER root
 RUN mkdir -p /root/.homebridge
 
-RUN [ "cross-build-end" ]
-
 EXPOSE 5353 51826
 VOLUME /root/.homebridge
 WORKDIR /root/.homebridge
 
-ADD start.sh /root/.homebridge/start.sh
-RUN chmod +x /root/.homebridge/start.sh
+COPY start.sh /root/.homebridge/start.sh
 
 CMD ["/root/.homebridge/start.sh"]
+
+RUN [ "cross-build-end" ]
