@@ -42,15 +42,12 @@ RUN npm install -g --unsafe-perm \
 
 RUN mkdir -p /var/run/dbus/
 
-USER root
 RUN mkdir -p /root/.homebridge
-
-EXPOSE 5353 51826
-VOLUME /root/.homebridge
 WORKDIR /root/.homebridge
-
 COPY start.sh /root/.homebridge/start.sh
 
-CMD ["/root/.homebridge/start.sh"]
+EXPOSE 5353 51826
+
+CMD ["/bin/sh", "/root/.homebridge/start.sh"]
 
 RUN [ "cross-build-end" ]
